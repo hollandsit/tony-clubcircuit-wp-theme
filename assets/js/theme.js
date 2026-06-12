@@ -272,9 +272,9 @@
 			}
 		});
 
-		// Reset state when resizing up to desktop.
+		// Reset state when resizing up to desktop (matches the CSS nav breakpoint).
 		window.addEventListener('resize', function () {
-			if (window.innerWidth >= 992) {
+			if (window.innerWidth >= 1300) {
 				nav.classList.remove('is-open');
 				toggle.setAttribute('aria-expanded', 'false');
 			}

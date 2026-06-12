@@ -29,8 +29,8 @@ global $post;
 					<div class="caption">
 						<div class="container">
 							<div class="caption_inr">
-								<?php if ( $title ) : ?><h2><?php echo esc_html( $title ); ?></h2><?php endif; ?>
-								<?php if ( $sub_title ) : ?><h3><?php echo esc_html( $sub_title ); ?></h3><?php endif; ?>
+								<?php if ( $title ) : ?><h2><?php echo wp_kses_post( $title ); ?></h2><?php endif; ?>
+								<?php if ( $sub_title ) : ?><h3><?php echo wp_kses_post( $sub_title ); ?></h3><?php endif; ?>
 								<?php if ( $button_label && $button_url ) : ?>
 									<div class="btns"><a href="<?php echo esc_url( $button_url ); ?>"><?php echo esc_html( $button_label ); ?></a></div>
 								<?php endif; ?>

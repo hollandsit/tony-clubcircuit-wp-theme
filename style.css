@@ -395,7 +395,7 @@ input[type="submit"]:hover, .wpcf7-submit:hover {
 	height: 2px;
 	width: 0;
 	margin-top: 4px;
-	background: var(--cc-red);
+	background: var(--cc-blue);
 	transition: width .25s var(--cc-ease);
 }
 .main-navigation > .menu > li:hover > a::after,
@@ -1057,6 +1057,14 @@ input[type="submit"]:hover, .wpcf7-submit:hover {
 .footer-nav li a { text-transform: uppercase; font-weight: 700; font-size: .85rem; color: var(--cc-ink); }
 .footer-nav li a:hover { color: var(--cc-blue); }
 .visitorcounter { font-size: .9rem; }
+/* Visitor Counter widget hardcodes font-family:Merriweather inline — override
+   it so the widget matches the rest of the site's typography. */
+.site-footer .visitor-counter-heading,
+.site-footer .visitor-counter-content,
+.site-footer .visitor-counter-content * { font-family: var(--cc-font) !important; }
+.site-footer .visitor-counter-heading { font-size: 1.05rem; }
+.site-footer .visitor-counter-content { color: var(--cc-text) !important; }
+.site-footer .visitor-counter-content p { margin: 0 0 .35rem; }
 .ftr_copyright { margin: 1rem 0 0; font-size: .88rem; color: var(--cc-muted); }
 .site-footer .ftr_social a { background: #fff; color: var(--cc-blue); border: 1px solid var(--cc-line); }
 .site-footer .ftr_social a:hover { background: var(--cc-blue); color: #fff; border-color: var(--cc-blue); }
@@ -1102,7 +1110,9 @@ label { font-weight: 600; color: var(--cc-ink); }
 .widget-area { margin-top: 2rem; }
 
 /* 25. Responsive -------------------------------------------------------- */
-@media (max-width: 991.98px) {
+/* The horizontal nav has 7 top-level items plus a search box; switch to the
+   mobile menu below 1300px so links never overflow off the right edge. */
+@media (max-width: 1299.98px) {
 	:root { --cc-header-h: 64px; }
 
 	.cc-nav-toggle { display: inline-flex; }
@@ -1190,6 +1200,9 @@ label { font-weight: 600; color: var(--cc-ink); }
 	.cc-slider__btn { width: 38px; height: 38px; }
 	.cc-slider__btn--prev { left: 6px; }
 	.cc-slider__btn--next { right: 6px; }
+	/* Banner arrows would overlap the left-aligned caption on phones — the dots
+	   and swipe gestures remain for navigation. */
+	.banner .cc-slider__btn { display: none; }
 
 	.blog_img { flex-basis: 100%; }
 	.next_prev_blog { gap: .5rem; }

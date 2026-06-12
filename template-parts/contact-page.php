@@ -38,7 +38,7 @@ while ( have_posts() ) :
 										<ul>
 											<?php $address = get_field( 'address' ); ?>
 											<?php if ( $address ) : ?>
-												<li><?php tcc_icon( 'map' ); ?> <span><?php echo esc_html( $address ); ?></span></li>
+												<li><?php tcc_icon( 'map' ); ?> <span><?php echo wp_kses_post( $address ); ?></span></li>
 											<?php endif; ?>
 											<?php $phone = get_field( 'phone' ); ?>
 											<?php if ( $phone ) : ?>
