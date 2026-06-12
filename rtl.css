@@ -1,0 +1,36 @@
+/*
+ * RTL styles for Tony Club Circuit.
+ * Loaded automatically by WordPress for right-to-left languages.
+ */
+
+body { direction: rtl; unicode-bidi: embed; }
+
+.site-branding { margin-right: 0; margin-left: auto; }
+.cc-nav-toggle { margin-left: 0; margin-right: auto; }
+
+.alignleft { float: right; margin: .35rem 0 1rem 1.5rem; }
+.alignright { float: left; margin: .35rem 1.5rem 1rem 0; }
+
+[class*="col-xs-"],
+[class*="col-sm-"],
+[class*="col-md-"],
+[class*="col-lg-"] { float: right; }
+
+.pull-right { float: left !important; }
+.pull-left { float: right !important; }
+
+.main-navigation ul ul { left: auto; right: 0; }
+.main-navigation ul ul ul { left: auto; right: 100%; }
+
+.cc-slider__btn--prev { left: auto; right: 14px; }
+.cc-slider__btn--next { right: auto; left: 14px; }
+
+.location_text p,
+.map_address li,
+.ftr_social ul,
+.contact_social ul { direction: rtl; }
+
+.rules_links { border-left: 0; border-right: 4px solid var(--cc-blue); }
+.owl-carousel-home .caption {
+	background: linear-gradient(-90deg, rgba(13, 27, 39, .72) 0%, rgba(13, 27, 39, .35) 55%, rgba(13, 27, 39, .15) 100%);
+}
