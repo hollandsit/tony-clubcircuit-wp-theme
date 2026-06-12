@@ -40,7 +40,7 @@
 				else :
 					?>
 					<a class="site-logo" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
-						<img src="<?php echo esc_url( get_template_directory_uri() . '/images/logo.png' ); ?>" alt="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>">
+						<img src="<?php echo esc_url( get_template_directory_uri() . '/images/logo.jpg' ); ?>" alt="<?php echo esc_attr( get_bloginfo( 'name' ) ); ?>">
 					</a>
 					<?php
 				endif;

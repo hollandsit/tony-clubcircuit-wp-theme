@@ -673,6 +673,13 @@ input[type="submit"]:hover, .wpcf7-submit:hover {
 	transition: transform .25s var(--cc-ease), box-shadow .25s var(--cc-ease);
 }
 .announcement_card:hover { transform: translateY(-5px); box-shadow: var(--cc-shadow-md); }
+
+/* Announcement carousel controls sit ABOVE the cards (top-right) so they never
+   overlap the card image or heading. The banner slider keeps centred arrows. */
+.announcement-owl-carousel.cc-slider { padding-top: 60px; }
+.announcement-owl-carousel .cc-slider__btn { top: 6px; transform: none; width: 42px; height: 42px; }
+.announcement-owl-carousel .cc-slider__btn--prev { left: auto; right: 60px; }
+.announcement-owl-carousel .cc-slider__btn--next { right: 8px; }
 .anouncement_img { aspect-ratio: 16 / 9; overflow: hidden; background: var(--cc-soft-2); }
 .anouncement_img img { width: 100%; height: 100%; object-fit: cover; }
 .announcement_content { padding: 1.25rem 1.35rem 1.5rem; display: flex; flex-direction: column; flex: 1; }
@@ -1032,31 +1039,33 @@ input[type="submit"]:hover, .wpcf7-submit:hover {
 
 /* 23. Footer ------------------------------------------------------------ */
 .site-footer {
-	background: #0e1c28;
-	color: #aeb9c4;
+	background: var(--cc-soft);
+	color: var(--cc-text);
 	padding: clamp(2.5rem, 1.8rem + 2vw, 3.5rem) 0 1.5rem;
-	margin-top: 1rem;
+	margin-top: 2rem;
+	border-top: 1px solid var(--cc-line);
 }
-.site-footer a { color: #d7dee6; }
-.site-footer a:hover { color: var(--cc-gold); }
-.site-footer h2, .site-footer h3, .site-footer h4 { color: #fff; text-transform: uppercase; font-size: 1.05rem; margin-bottom: 1rem; letter-spacing: .03em; }
+.site-footer a { color: var(--cc-blue); }
+.site-footer a:hover { color: var(--cc-red); }
+.site-footer h2, .site-footer h3, .site-footer h4 { color: var(--cc-ink); text-transform: uppercase; font-size: 1.05rem; margin-bottom: 1rem; letter-spacing: .03em; }
 .footer-top { padding-bottom: 1.75rem; }
-.footer-main { padding: 1.75rem 0 0; border-top: 1px solid rgba(255, 255, 255, .08); }
+.footer-main { padding: 1.75rem 0 0; border-top: 1px solid var(--cc-line); }
 .site-footer .widget { margin-bottom: 1.5rem; }
 .site-footer ul { list-style: none; margin: 0; padding: 0; }
 .footer-nav ul { display: flex; flex-wrap: wrap; gap: .25rem 1.25rem; }
-.footer-nav li a { text-transform: uppercase; font-weight: 700; font-size: .85rem; color: #aeb9c4; }
-.footer-nav li a:hover { color: #fff; }
+.footer-nav li { border: 0; }
+.footer-nav li a { text-transform: uppercase; font-weight: 700; font-size: .85rem; color: var(--cc-ink); }
+.footer-nav li a:hover { color: var(--cc-blue); }
 .visitorcounter { font-size: .9rem; }
-.ftr_copyright { margin: 1rem 0 0; font-size: .88rem; color: #8997a4; }
-.site-footer .ftr_social a { background: rgba(255, 255, 255, .08); color: #fff; }
-.site-footer .ftr_social a:hover { background: var(--cc-blue); }
+.ftr_copyright { margin: 1rem 0 0; font-size: .88rem; color: var(--cc-muted); }
+.site-footer .ftr_social a { background: #fff; color: var(--cc-blue); border: 1px solid var(--cc-line); }
+.site-footer .ftr_social a:hover { background: var(--cc-blue); color: #fff; border-color: var(--cc-blue); }
 .footer-bottom {
 	margin-top: 1.5rem;
 	padding-top: 1.25rem;
-	border-top: 1px solid rgba(255, 255, 255, .08);
+	border-top: 1px solid var(--cc-line);
 	font-size: .82rem;
-	color: #7d8b98;
+	color: var(--cc-muted);
 	text-align: center;
 }
 

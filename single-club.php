@@ -41,7 +41,7 @@ while ( have_posts() ) :
 					<?php $about_history = get_post_meta( $club_id, 'about_history', true ); ?>
 					<?php if ( ! empty( $about_history ) ) : ?>
 						<div class="club_header_excerpt">
-							<p><?php echo nl2br( esc_html( $about_history ) ); ?></p>
+							<p><?php echo nl2br( wp_kses_post( $about_history ) ); ?></p>
 						</div>
 					<?php endif; ?>
 

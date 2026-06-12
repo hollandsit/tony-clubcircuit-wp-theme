@@ -50,7 +50,7 @@ while ( have_posts() ) :
 				<?php $post_description = get_post_meta( $post_id, 'post_description', true ); ?>
 				<?php if ( ! empty( $post_description ) ) : ?>
 					<div class="row">
-						<div class="col-xs-12"><?php echo nl2br( esc_html( $post_description ) ); ?></div>
+						<div class="col-xs-12"><?php echo nl2br( wp_kses_post( $post_description ) ); ?></div>
 					</div>
 				<?php endif; ?>
 			</div>
