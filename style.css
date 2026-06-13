@@ -322,25 +322,29 @@ input[type="submit"]:hover, .wpcf7-submit:hover {
 }
 .site-header.is-scrolled { box-shadow: 0 6px 24px rgba(22, 36, 47, .08); }
 
+/* Logo sits top-left; the search box (top) and primary nav (below) stack on
+   the right — mirroring the original clubcircuit.com.au header. */
 .site-header__inner {
 	display: flex;
+	flex-wrap: wrap;
 	align-items: center;
-	gap: 1.25rem;
+	column-gap: 1rem;
+	row-gap: .5rem;
 	min-height: var(--cc-header-h);
-	padding-top: .5rem;
-	padding-bottom: .5rem;
+	padding-top: .6rem;
+	padding-bottom: .6rem;
 }
 
 .site-branding { flex: 0 0 auto; margin-right: auto; }
 .site-branding img,
 .site-branding .custom-logo { display: block; max-height: 56px; width: auto; }
 
-.header-search { flex: 0 0 auto; }
+.header-search { order: 1; flex: 0 0 auto; }
 .header-search .search-form { position: relative; display: flex; align-items: center; }
 .header-search .search-field {
-	width: 190px;
-	max-width: 42vw;
-	padding: .55rem 2.4rem .55rem 1rem;
+	width: 320px;
+	max-width: 38vw;
+	padding: .6rem 2.4rem .6rem 1rem;
 	border: 1px solid var(--cc-line);
 	border-radius: var(--cc-radius-pill);
 	background: var(--cc-soft);
@@ -366,8 +370,8 @@ input[type="submit"]:hover, .wpcf7-submit:hover {
 }
 .header-search .search-submit:hover { color: var(--cc-blue); }
 
-/* Primary nav */
-.main-navigation { flex: 0 0 auto; }
+/* Primary nav — its own full-width row beneath the search, items right-aligned */
+.main-navigation { order: 2; flex: 1 1 100%; }
 .main-navigation .menu,
 .main-navigation ul {
 	list-style: none;
@@ -377,13 +381,15 @@ input[type="submit"]:hover, .wpcf7-submit:hover {
 	align-items: center;
 	gap: .25rem;
 }
+.main-navigation > .menu,
+.main-navigation > ul { justify-content: flex-end; }
 .main-navigation li { position: relative; }
 .main-navigation a {
 	display: block;
-	padding: .7rem .85rem;
+	padding: .7rem .6rem;
 	color: var(--cc-ink);
 	font-weight: 700;
-	font-size: .9rem;
+	font-size: .85rem;
 	letter-spacing: .01em;
 	text-transform: uppercase;
 	border-radius: var(--cc-radius-sm);
@@ -1110,17 +1116,18 @@ label { font-weight: 600; color: var(--cc-ink); }
 .widget-area { margin-top: 2rem; }
 
 /* 25. Responsive -------------------------------------------------------- */
-/* The horizontal nav has 7 top-level items plus a search box; switch to the
-   mobile menu below 1300px so links never overflow off the right edge. */
-@media (max-width: 1299.98px) {
+/* On wider screens the nav sits on its own row below the search, so it stays
+   horizontal down to tablet. Below 768px collapse to the hamburger menu:
+   logo + toggle on the top row, full-width search beneath, nav as a dropdown. */
+@media (max-width: 767.98px) {
 	:root { --cc-header-h: 64px; }
 
-	.cc-nav-toggle { display: inline-flex; }
-	.header-search { order: 3; flex: 1 1 100%; }
+	.cc-nav-toggle { display: inline-flex; order: 1; }
+	.header-search { order: 2; flex: 1 1 100%; }
 	.header-search .search-field { width: 100%; max-width: 100%; }
 
 	.main-navigation {
-		order: 4;
+		order: 3;
 		flex: 1 1 100%;
 		display: none;
 	}
@@ -1183,8 +1190,6 @@ label { font-weight: 600; color: var(--cc-ink); }
 
 @media (max-width: 767.98px) {
 	body { font-size: 15.5px; }
-
-	.site-header__inner { flex-wrap: wrap; gap: .75rem; }
 
 	.boxcolumn .row { display: block; }
 	.serv_inr { margin-bottom: 1.25rem; height: auto; }
