@@ -61,6 +61,13 @@ Tags: custom-post-types, responsive, sports, club, two-columns, custom-menu
 	--cc-soft: #f5f8fb;
 	--cc-soft-2: #eef2f7;
 
+	/* Dark footer (matches the deep footer of the previous site, on-brand navy) */
+	--cc-footer-bg: #0f1a23;
+	--cc-footer-text: rgba(255, 255, 255, .72);
+	--cc-footer-muted: rgba(255, 255, 255, .5);
+	--cc-footer-line: rgba(255, 255, 255, .12);
+	--cc-footer-field: rgba(255, 255, 255, .09);
+
 	--cc-container: 1200px;
 	--cc-gutter: 15px;
 
@@ -312,34 +319,32 @@ input[type="submit"]:hover, .wpcf7-submit:hover {
 
 /* 8. Header & navigation ------------------------------------------------ */
 .site-header {
-	position: sticky;
-	top: 0;
+	position: relative;
 	z-index: 1000;
-	background: rgba(255, 255, 255, .96);
-	backdrop-filter: saturate(140%) blur(8px);
+	background: #fff;
 	border-bottom: 1px solid var(--cc-line);
-	transition: box-shadow .25s var(--cc-ease);
 }
 .site-header.is-scrolled { box-shadow: 0 6px 24px rgba(22, 36, 47, .08); }
 
-/* Logo sits top-left; the search box (top) and primary nav (below) stack on
-   the right — mirroring the original clubcircuit.com.au header. */
+/* Search sits on a slim top row (right); the logo drops down onto the same
+   line as the menu items below, keeping the header compact. */
 .site-header__inner {
 	display: flex;
 	flex-wrap: wrap;
 	align-items: center;
 	column-gap: 1rem;
-	row-gap: .5rem;
-	min-height: var(--cc-header-h);
-	padding-top: .6rem;
-	padding-bottom: .6rem;
+	row-gap: .1rem;
+	padding-top: .2rem;
+	padding-bottom: .3rem;
 }
 
-.site-branding { flex: 0 0 auto; margin-right: auto; }
+/* Lift the logo up so it aligns higher in the bar, sitting alongside the
+   right-aligned search row rather than fully below it (matches the live site). */
+.site-branding { order: 2; flex: 0 0 auto; margin-right: auto; margin-top: -.6rem; }
 .site-branding img,
-.site-branding .custom-logo { display: block; max-height: 56px; width: auto; }
+.site-branding .custom-logo { display: block; max-height: 90px; width: auto; }
 
-.header-search { order: 1; flex: 0 0 auto; }
+.header-search { order: 1; flex: 1 1 100%; display: flex; justify-content: flex-end; }
 .header-search .search-form { position: relative; display: flex; align-items: center; }
 .header-search .search-field {
 	width: 320px;
@@ -370,8 +375,8 @@ input[type="submit"]:hover, .wpcf7-submit:hover {
 }
 .header-search .search-submit:hover { color: var(--cc-blue); }
 
-/* Primary nav — its own full-width row beneath the search, items right-aligned */
-.main-navigation { order: 2; flex: 1 1 100%; }
+/* Primary nav shares the lower row with the logo, items right-aligned */
+.main-navigation { order: 3; flex: 0 1 auto; }
 .main-navigation .menu,
 .main-navigation ul {
 	list-style: none;
@@ -386,10 +391,11 @@ input[type="submit"]:hover, .wpcf7-submit:hover {
 .main-navigation li { position: relative; }
 .main-navigation a {
 	display: block;
-	padding: .7rem .6rem;
+	padding: .7rem .72rem;
 	color: var(--cc-ink);
 	font-weight: 700;
-	font-size: .85rem;
+	font-size: .98rem;
+	white-space: nowrap;
 	letter-spacing: .01em;
 	text-transform: uppercase;
 	border-radius: var(--cc-radius-sm);
@@ -493,7 +499,7 @@ input[type="submit"]:hover, .wpcf7-submit:hover {
 	inset: 0;
 	display: flex;
 	align-items: center;
-	background: linear-gradient(90deg, rgba(13, 27, 39, .72) 0%, rgba(13, 27, 39, .35) 55%, rgba(13, 27, 39, .15) 100%);
+	background: linear-gradient(90deg, rgba(13, 27, 39, .62) 0%, rgba(13, 27, 39, .38) 26%, rgba(13, 27, 39, 0) 52%);
 }
 .owl-carousel-home .caption_inr { max-width: 640px; color: #fff; }
 .owl-carousel-home .caption_inr h2 {
@@ -1045,43 +1051,75 @@ input[type="submit"]:hover, .wpcf7-submit:hover {
 
 /* 23. Footer ------------------------------------------------------------ */
 .site-footer {
-	background: var(--cc-soft);
-	color: var(--cc-text);
+	background: var(--cc-footer-bg);
+	color: var(--cc-footer-text);
 	padding: clamp(2.5rem, 1.8rem + 2vw, 3.5rem) 0 1.5rem;
-	margin-top: 2rem;
-	border-top: 1px solid var(--cc-line);
+	margin-top: 2.5rem;
 }
-.site-footer a { color: var(--cc-blue); }
-.site-footer a:hover { color: var(--cc-red); }
-.site-footer h2, .site-footer h3, .site-footer h4 { color: var(--cc-ink); text-transform: uppercase; font-size: 1.05rem; margin-bottom: 1rem; letter-spacing: .03em; }
+.site-footer a { color: #fff; }
+.site-footer a:hover { color: var(--cc-gold); }
+.site-footer h2, .site-footer h3, .site-footer h4 { color: #fff; text-transform: uppercase; font-size: 1.05rem; margin-bottom: 1rem; letter-spacing: .03em; }
 .footer-top { padding-bottom: 1.75rem; }
-.footer-main { padding: 1.75rem 0 0; border-top: 1px solid var(--cc-line); }
+.footer-main { padding: 1.75rem 0 0; border-top: 1px solid var(--cc-footer-line); }
 .site-footer .widget { margin-bottom: 1.5rem; }
 .site-footer ul { list-style: none; margin: 0; padding: 0; }
+.site-footer .widget ul li { border-color: var(--cc-footer-line); }
 .footer-nav ul { display: flex; flex-wrap: wrap; gap: .25rem 1.25rem; }
 .footer-nav li { border: 0; }
-.footer-nav li a { text-transform: uppercase; font-weight: 700; font-size: .85rem; color: var(--cc-ink); }
-.footer-nav li a:hover { color: var(--cc-blue); }
+.footer-nav li a { text-transform: uppercase; font-weight: 700; font-size: .85rem; color: var(--cc-footer-text); }
+.footer-nav li a:hover { color: #fff; }
 .visitorcounter { font-size: .9rem; }
 /* Visitor Counter widget hardcodes font-family:Merriweather inline — override
    it so the widget matches the rest of the site's typography. */
 .site-footer .visitor-counter-heading,
 .site-footer .visitor-counter-content,
 .site-footer .visitor-counter-content * { font-family: var(--cc-font) !important; }
-.site-footer .visitor-counter-heading { font-size: 1.05rem; }
-.site-footer .visitor-counter-content { color: var(--cc-text) !important; }
+.site-footer .visitor-counter-heading { font-size: 1.05rem; color: #fff; }
+.site-footer .visitor-counter-content { color: var(--cc-footer-text) !important; }
 .site-footer .visitor-counter-content p { margin: 0 0 .35rem; }
-.ftr_copyright { margin: 1rem 0 0; font-size: .88rem; color: var(--cc-muted); }
-.site-footer .ftr_social a { background: #fff; color: var(--cc-blue); border: 1px solid var(--cc-line); }
+.ftr_copyright { margin: 1rem 0 0; font-size: .88rem; color: var(--cc-footer-muted); }
+.site-footer .ftr_social a { background: var(--cc-footer-field); color: #fff; border: 1px solid var(--cc-footer-line); }
 .site-footer .ftr_social a:hover { background: var(--cc-blue); color: #fff; border-color: var(--cc-blue); }
 .footer-bottom {
 	margin-top: 1.5rem;
 	padding-top: 1.25rem;
-	border-top: 1px solid var(--cc-line);
+	border-top: 1px solid var(--cc-footer-line);
 	font-size: .82rem;
-	color: var(--cc-muted);
+	color: var(--cc-footer-muted);
 	text-align: center;
 }
+
+/* Newsletter (Simple Newsletter widget) — clean, borderless filled fields.
+   NB: the plugin markup misspells the field class as "simplenewsleter". */
+.site-footer #simplenewsletter-widget p { color: var(--cc-footer-text); margin-top: -.4rem; }
+.site-footer .simplenewsletter form {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: .6rem;
+	margin-top: .25rem;
+	max-width: 560px;
+}
+.site-footer .simplenewsleter-field { flex: 1 1 200px; min-width: 0; border: 0; margin: 0; padding: 0; }
+.site-footer .simplenewsletter input[type="text"],
+.site-footer .simplenewsletter input[type="email"] {
+	width: 100%;
+	border: 0;
+	background: var(--cc-footer-field);
+	color: #fff;
+	border-radius: var(--cc-radius-pill);
+	padding: .7rem 1.1rem;
+	transition: background .2s var(--cc-ease), box-shadow .2s var(--cc-ease);
+}
+.site-footer .simplenewsletter input::placeholder { color: rgba(255, 255, 255, .55); }
+.site-footer .simplenewsletter input[type="text"]:focus,
+.site-footer .simplenewsletter input[type="email"]:focus {
+	outline: none;
+	background: rgba(255, 255, 255, .15);
+	box-shadow: 0 0 0 2px rgba(255, 255, 255, .28);
+}
+.site-footer .simplenewsleter-field-submit { flex: 0 0 auto; }
+.site-footer .simplenewsletter-success { color: var(--cc-gold); font-weight: 600; margin-top: .5rem; }
 
 /* 24. Forms & widgets --------------------------------------------------- */
 input[type="text"], input[type="email"], input[type="url"], input[type="password"],
@@ -1116,18 +1154,27 @@ label { font-weight: 600; color: var(--cc-ink); }
 .widget-area { margin-top: 2rem; }
 
 /* 25. Responsive -------------------------------------------------------- */
-/* On wider screens the nav sits on its own row below the search, so it stays
-   horizontal down to tablet. Below 768px collapse to the hamburger menu:
-   logo + toggle on the top row, full-width search beneath, nav as a dropdown. */
-@media (max-width: 767.98px) {
+/* Between tablet and ~1100px the 7 nav labels get tight on their row, so step
+   the font and spacing down a touch to keep them on a single line. */
+@media (max-width: 1100px) {
+	.main-navigation a { font-size: .86rem; padding: .65rem .5rem; }
+	.main-navigation .menu,
+	.main-navigation ul { gap: .1rem; }
+}
+
+/* Above this width the logo and nav share one row. Once they'd get cramped,
+   collapse to the hamburger menu: logo + toggle on the top row, full-width
+   search beneath, nav as a dropdown. */
+@media (max-width: 991.98px) {
 	:root { --cc-header-h: 64px; }
 
-	.cc-nav-toggle { display: inline-flex; order: 1; }
-	.header-search { order: 2; flex: 1 1 100%; }
+	.site-branding { order: 1; }
+	.cc-nav-toggle { display: inline-flex; order: 2; }
+	.header-search { order: 3; flex: 1 1 100%; display: block; }
 	.header-search .search-field { width: 100%; max-width: 100%; }
 
 	.main-navigation {
-		order: 3;
+		order: 4;
 		flex: 1 1 100%;
 		display: none;
 	}
